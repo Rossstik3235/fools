@@ -1,0 +1,41 @@
+import random
+
+# Определение списка возможных ходов
+moves = ["камень", "ножницы", "бумага"]
+
+# Определение функции, которая спрашивает у пользователя его выбор и возвращает его
+def get_player_move():
+    while True:
+        player_move = input("Выберите свой ход (камень, ножницы, бумага): ").lower()
+        if player_move in moves:
+            return player_move
+        else:
+            print("Ошибка: неправильный выбор. Попробуйте еще раз.")
+
+# Определение функции, которая генерирует случайный ход компьютера и возвращает его
+def get_computer_move():
+    return random.choice(moves)
+
+# Определение функции, которая сравнивает выборы игрока и компьютера и выводит результат игры
+def play_game(player_move, computer_move):
+    print("Вы выбрали:", player_move)
+    print("Компьютер выбрал:", computer_move)
+    if player_move == computer_move:
+        print("Ничья!")
+    elif player_move == "камень" and computer_move == "ножницы":
+        print("Вы победили!")
+    elif player_move == "ножницы" and computer_move == "бумага":
+        print("Вы победили!")
+    elif player_move == "бумага" and computer_move == "камень":
+        print("Вы победили!")
+    else:
+        print("Компьютер победил!")
+
+# Основной цикл игры
+while True:
+    player_move = get_player_move()
+    computer_move = get_computer_move()
+    play_game(player_move, computer_move)
+    play_again = input("Хотите сыграть еще раз? (да/нет) ").lower()
+    if play_again != "да":
+        break
